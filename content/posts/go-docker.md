@@ -7,11 +7,11 @@ draft: false
 
 ### What we will build
 
-At the end of this tutorial you will build a simple web server in Go with one endpoint running in Docker container.
+At the end of this tutorial you will build a simple web server in Go with one endpoint running in a Docker container.
 
 ### Prerequisites
 
-This tutorial assumes you have already installed Go programming language and Docker on your machine. If not, head over to the documentation for steps on how to do that.
+This tutorial assumes you have already installed the Go programming language and Docker on your machine. If not, head over to the documentation for steps on how to do that.
 
 - [Go](https://go.dev/dl/)
 - [Docker](https://www.docker.com/)
@@ -58,7 +58,7 @@ func main() {
 	fmt.Println("Hello from Go!")
 }
 ```
-and run it using command:
+and run it using this command:
 ```bash
 $ go run cmd/api/main.go
 ```
@@ -70,7 +70,7 @@ in the console.
 
 # Starting web server
 
-All right, now that we have everything working let's start writing some code for the web server. We will start by creating `internal/config/config.go` file that will contain an `Application` structure which will hold application configuration.
+All right, now that we have everything working let's start writing some code for the web server. We will start by creating a `internal/config/config.go` file that will contain an `Application` structure which will hold application configuration.
 ```go
 package config
 
@@ -92,7 +92,7 @@ You can check in your `go.mod` file that the package was in fact installed. Ther
 require github.com/go-chi/chi/v5 v5.0.10 // indirect
 ```
 
-We can now define routes of our application. Right now there will be only one route but in the future we will add more of them in the same file. Make `cmd/api/routes.go` file and open it.
+We can now define routes of our application. Right now there will be only one route but in the future we will add more of them in the same file. Make a `cmd/api/routes.go` file and open it.
 ```go
 package main
 
@@ -111,10 +111,10 @@ func routes() http.Handler {
 	return mux
 }
 ```
-We declare a new function that returns an `http.Handler` that will be used in a second in `main.go`. In this function we declare an endpoint that will accept GET requests and when called, the provided function will run. In Go, functions that will run when a request is made accept two parameters:
+We declare a new function that returns an `http.Handler` that will be used in a second in the `main.go`. In this function we declare an endpoint that will accept GET requests and when called, the provided function will run. In Go, functions that will run when a request is made accept two parameters:
 1. writer - we will write a response to the writer
 2. request - we can get data from the user
-Inside the function we write a string to the writer. At the end of the function we return created router. Let's now use it in `cmd/api/main.go`:
+Inside the function we write a string to the writer. At the end of the function we return created router. Let's now use it in the `cmd/api/main.go`:
 ```go
 package main
 
@@ -146,7 +146,7 @@ Open your favorite browser and go to `localhost:8080`. You should see `Hello fro
 
 # Handlers
 
-Since in the future we will have a lot of handlers, it would be a wise decision to move them to another package. For this we will create `internal/handlers/handlers.go` file.
+Since in the future we will have a lot of handlers, it would be a wise decision to move them to another package. For this we will create a `internal/handlers/handlers.go` file.
 ```go
 package handlers
 
@@ -178,7 +178,7 @@ func routes() http.Handler {
 
 # Returning a JSON
 
-Before running everything in a docker container, let's return a json instead of the plain text. We will need to rewrite `Home` function in `handlers.go` file.
+Before running everything in a docker container, let's return a json instead of the plain text. We will need to rewrite the `Home` function in the `handlers.go` file.
 
 First of all, let's create a struct with three fields:
 ```go
