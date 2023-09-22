@@ -1,5 +1,5 @@
 ---
-title: "Go with Docker"
+title: "Go with Docker part 1 - Setup"
 summary: Building web server in Go and Docker
 date: 2023-08-02T21:09:39+02:00
 draft: false
@@ -284,4 +284,4 @@ Since the port 8080 is bound, you can open a browser one more time and head over
 
 You can find full code for this tutorial in my github: https://github.com/anras5/go-with-docker
 
-Good luck and see you in the next tutorial 😎!
+Click here to see the next tutorial: [Part 2](/posts/go-docker-2/)

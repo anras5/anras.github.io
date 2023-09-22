@@ -40,7 +40,7 @@ params:
     ShowReadingTime: true
     # disableSpecial1stPost: true
     displayFullLangName: true
-    ShowPostNavLinks: true
+    # ShowPostNavLinks: true
     ShowBreadCrumbs: true
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: true
