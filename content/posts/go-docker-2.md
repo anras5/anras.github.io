@@ -21,11 +21,11 @@ This file will help us serialize and deserialize data into structs with ease. Op
 
 ## Writing JSON
 
-To begin, we will create a function that allows us to write data in the form of JSON to the ResponseWriter. We start by declaring the WriteJSON function with a capital first letter so that the function is visible outside the config package. We will also add an Application receiver so that we can use it in our application in handlers.go.
+To begin, we will create a function that allows us to write data in the form of JSON to the ResponseWriter. We start by declaring the WriteJSON function with a capital first letter so that the function is visible outside the config package.
 
 ```go
 // WriteJSON is used to write json data to the ResponseWrite
-func (app *Application) WriteJSON(w http.ResponseWriter, status int, data interface{}, customHeaders ...http.Header) error {
+func WriteJSON(w http.ResponseWriter, status int, data interface{}, customHeaders ...http.Header) error {
 	return nil
 }
 ```
@@ -80,7 +80,7 @@ This code should work effectively for writing JSON data to the ResponseWriter wi
 
 We will create a function `ReadJSON` that allows us to read data in the form of JSON from a http.Request to an interface.
 ```go
-func (app *Application) ReadJSON(w http.ResponseWriter, r *http.Request, data interface{}) error {
+func ReadJSON(w http.ResponseWriter, r *http.Request, data interface{}) error {
 	maxBytes := 1024 * 1024
 	r.Body = http.MaxBytesReader(w, r.Body, int64(maxBytes))
 
@@ -108,7 +108,7 @@ In this function we decode JSON data from a http.Request and ensure that the req
 Another helpful function is `ErrorJSON` that will allow us to quickly send errors to the users. First we need to create
 
 ```go
-func (app *Application) ErrorJSON(w http.ResponseWriter, err error, status ...int) error {
+func ErrorJSON(w http.ResponseWriter, err error, status ...int) error {
 	statusCode := http.StatusBadRequest
 	if len(status) > 0 {
 		statusCode = status[0]
